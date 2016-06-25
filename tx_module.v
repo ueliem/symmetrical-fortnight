@@ -48,67 +48,55 @@ always @ ( * ) begin
 			// if tx enable, start transmitting
 			if (enable) begin
 				next_state = STATE_StartBit;
-				// sr_reset = 1'b1;
 			end
 			else begin
 				next_state = STATE_Idle;
 			end
 		end
 		STATE_StartBit: begin
-			// $display("Start");
 			next_state = STATE_Data0;
 			parity_bit = 1'b0;
 			sr_reset = 1'b1;
 		end
 		STATE_Data0: begin
-			// $display("Data0");
 			parity_bit = parity_bit ^ sr_dout;
 			next_state = STATE_Data1;
 			sr_reset = 1'b0;
 			tx_data = 1'b1;
 		end
 		STATE_Data1: begin
-			// $display("Data1");
 			parity_bit = parity_bit ^ sr_dout;
 			next_state = STATE_Data2;
 		end
 		STATE_Data2: begin
-			// $display("Data2");
 			parity_bit = parity_bit ^ sr_dout;
 			next_state = STATE_Data3;
 		end
 		STATE_Data3: begin
-			// $display("Data3");
 			parity_bit = parity_bit ^ sr_dout;
 			next_state = STATE_Data4;
 		end
 		STATE_Data4: begin
-			// $display("Data4");
 			parity_bit = parity_bit ^ sr_dout;
 			next_state = STATE_Data5;
 		end
 		STATE_Data5: begin
-			// $display("Data5");
 			parity_bit = parity_bit ^ sr_dout;
 			next_state = STATE_Data6;
 		end
 		STATE_Data6: begin
-			// $display("Data6");
 			parity_bit = parity_bit ^ sr_dout;
 			next_state = STATE_Data7;
 		end
 		STATE_Data7: begin
-			// $display("Data7");
 			parity_bit = parity_bit ^ sr_dout;
 			next_state = STATE_Parity;
 		end
 		STATE_Parity: begin
-			// $display("Parity");
 			next_state = STATE_StopBit;
 			tx_data = 1'b0;
 		end
 		STATE_StopBit: begin
-			// $display("Stop");
 			next_state = STATE_Idle;
 		end
 	endcase

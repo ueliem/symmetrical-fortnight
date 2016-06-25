@@ -1,6 +1,17 @@
 test:
 	iverilog -c dependencies.txt && ./a.out
 
+tx: tx-test0 tx-test1 tx-test2
+
+tx-test0:
+	iverilog shift_reg_piso.v shift_reg_sipo.v tx_module.v tests/tx_module/test0.v && ./a.out
+
+tx-test1:
+	iverilog shift_reg_piso.v shift_reg_sipo.v tx_module.v tests/tx_module/test1.v && ./a.out
+
+tx-test2:
+	iverilog shift_reg_piso.v shift_reg_sipo.v tx_module.v tests/tx_module/test2.v && ./a.out
+
 sr: sr-sipo sr-piso
 
 sr-sipo: sr-sipo-test0 sr-sipo-test1 sr-sipo-test2
