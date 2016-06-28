@@ -1,0 +1,7 @@
+counter.v
+shift_reg_sipo.v
+shift_reg_piso.v
+tx_module.v
+rx_module.v
+uart.v
+
