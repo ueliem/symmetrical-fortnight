@@ -1,6 +1,20 @@
 test:
 	iverilog -c dependencies.txt && ./a.out
 
+rx: rx-test0
+
+rx-test0:
+	iverilog counter.v clock_divider.v shift_reg_piso.v shift_reg_sipo.v rx_module.v tests/rx_module/test0.v && ./a.out
+
+rx-test1:
+	iverilog counter.v clock_divider.v shift_reg_piso.v shift_reg_sipo.v rx_module.v tests/rx_module/test1.v && ./a.out
+
+ctr-test0:
+	iverilog counter.v tests/counter/test0.v && ./a.out
+
+cdiv-test0:
+	iverilog counter.v clock_divider.v tests/clock_divider/test0.v && ./a.out
+
 tx: tx-test0 tx-test1 tx-test2
 
 tx-test0:
